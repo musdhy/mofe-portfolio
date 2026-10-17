@@ -174,7 +174,7 @@ The current Email me button opens the visitor's configured email app addressed t
 
 ## Deployment and your own domain
 
-After you approve the preview and explicitly authorize deployment, create the public **mofe-portfolio** GitHub repository and import it into Vercel. Select **Other** for the framework, leave the build command empty, and use the repository root as the output directory. Request the project name **mofe**; the intended production URL is https://mofe.vercel.app, subject to availability. The repository root is the complete static site.
+The public repository is https://github.com/musdhy/mofe-portfolio and the Vercel project is **mofe**, connected to its **main** branch. The selected live address is https://mofe-ai.vercel.app because the requested mofe.vercel.app address was unavailable. Commits to main deploy automatically. The framework preset is **Other**, with no build command and the repository root as the output directory. The repository root is the complete static site.
 
 To connect a domain later: open the Vercel project → **Settings → Domains → Add**, enter your domain, and follow Vercel's displayed DNS instructions at your domain registrar. Once verified, update `site.url` in content.js to the new address. Keep GitHub connected so edits continue to deploy automatically.
 

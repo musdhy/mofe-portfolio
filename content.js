@@ -7,7 +7,7 @@ window.PORTFOLIO = {
     email: 'MMusdhaliph@gmail.com',
     linkedin: 'https://www.linkedin.com/in/mustapha-musdhaliph',
     socials: [],
-    url: 'https://mofe.vercel.app',
+    url: 'https://mofe-ai.vercel.app',
     description: 'AI automation, workflow automation and business process automation by Mustapha Musdhaliph Mofe. Practical AI integration for reliable business operations.',
     about: [
       'I’m a Business Automation & AI Implementation Specialist. I help businesses replace slow, manual processes with reliable automated systems, giving their teams more time to focus on growth. My work spans sales and marketing operations, including lead handling, follow-ups and campaign workflows, as well as customer onboarding, finance and back-office processes.',
