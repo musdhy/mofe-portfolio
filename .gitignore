@@ -1,0 +1,5 @@
+preview-*.png
+.vercel/
+.env
+.env.*
+node_modules/
