@@ -25,9 +25,12 @@ window.PORTFOLIO = {
         "n8n",
         "Zapier",
         "Make",
-        "Airtable",
-        "Notion",
-        "Google Sheets"
+        "Salesforce",
+        "Supabase",
+        "OpenAI",
+        "Anthropic",
+        "Claude Code",
+        "Codex"
       ]
     },
     {
@@ -38,6 +41,9 @@ window.PORTFOLIO = {
       "tools": [
         "HubSpot",
         "Zoho",
+        "Salesforce",
+        "OpenAI",
+        "Google Sheets",
         "CRM automation",
         "Process mapping"
       ]
