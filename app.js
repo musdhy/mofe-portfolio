@@ -43,6 +43,7 @@ $('tagline').textContent = site.tagline;
 site.about.forEach(text => $('about-content').append(make('p', text)));
 $('contact-copy').textContent = site.contact;
 $('email-button').href = `mailto:${site.email}`;
+$('email-button').textContent = site.email;
 $('copyright').textContent = `© ${new Date().getFullYear()} ${site.name}`;
 document.title = `${site.name} | ${site.title}`;
 for (const [selector, value] of [
@@ -90,6 +91,45 @@ async function checkResume() {
   } catch { /* Keep the accessible disabled state when no PDF is available. */ }
 }
 checkResume();
+// Keep the visitor's message in place if delivery fails.
+$('contact-form').addEventListener('submit', async event => {
+  event.preventDefault();
+  const form = event.currentTarget;
+  if (!form.reportValidity() || $('send-message').disabled) return;
+  if ($('contact-website').value) return;
+  const button = $('send-message');
+  const status = $('contact-status');
+  button.disabled = true;
+  button.textContent = 'Sending…';
+  status.textContent = '';
+  status.removeAttribute('data-error');
+  try {
+    const response = await fetch(form.action, {
+      method: 'POST',
+      headers: { Accept: 'application/json' },
+      body: new FormData(form),
+      signal: AbortSignal.timeout(15000)
+    });
+    const result = await response.json();
+    if (!response.ok || result.errors) throw new Error('Message not accepted');
+    status.textContent = 'Thanks—your message has been sent. I’ll reply by email.';
+    form.reset();
+  } catch {
+    status.dataset.error = 'true';
+    status.textContent = 'Your message could not be sent. Please try again or copy my email address below. Your message is still here.';
+  } finally {
+    button.disabled = false;
+    button.textContent = 'Send message ↗';
+  }
+});
+$('copy-email').addEventListener('click', async () => {
+  try {
+    await navigator.clipboard.writeText(site.email);
+    $('copy-status').textContent = 'Email address copied.';
+  } catch {
+    $('copy-status').textContent = 'Select and copy the email address above.';
+  }
+});
 function loomEmbed(value) {
   try {
     const url = new URL(value);
@@ -108,8 +148,8 @@ function openProject(project, trigger) {
   const title = make('h2', project.title);
   title.id = 'project-title';
   detail.append(title, make('p', project.summary));
-  detail.append(make('p', 'Watch a recorded demonstration of how this system works.', 'entry-meta'));
   if (project.videos?.length) {
+    detail.append(make('p', 'Watch the walkthrough here, then explore the case study below.', 'entry-meta'));
     detail.append(make('h3', 'Watch Demo'));
     project.videos.forEach((video, index) => {
       const url = loomEmbed(video);
@@ -117,7 +157,7 @@ function openProject(project, trigger) {
       const iframe = make('iframe', '', 'video-frame');
       iframe.src = url;
       iframe.title = `${project.title} — demo ${index + 1}`;
-      iframe.allow = 'autoplay; fullscreen; picture-in-picture';
+      iframe.allow = 'fullscreen; picture-in-picture';
       iframe.allowFullscreen = true;
       iframe.loading = 'lazy';
       detail.append(iframe);
@@ -127,7 +167,7 @@ function openProject(project, trigger) {
   }
   for (const [heading, text] of [
     ['The Challenge', project.challenge],
-    ['Our Approach', project.approach || project.how],
+    ['My Approach', project.approach || project.how],
     ['Key Integrations', project.integrations],
     ['The Outcome', project.outcome],
     ['What it does', project.what]
@@ -163,8 +203,9 @@ content.projects.forEach(project => {
   if (project.thumbnail) button.append(thumbnail(project.thumbnail, project.thumbnailAlt || project.title));
   button.append(make('h3', project.title), make('p', project.summary), tags(project.tools));
   const hasDemo = project.videos?.some(video => loomEmbed(video));
-  button.append(make('span', hasDemo ? 'Watch Demo →' : 'Demo coming soon', 'project-action'));
-  button.setAttribute('aria-label', hasDemo ? `Watch demo: ${project.title}` : `${project.title}: demo coming soon, read case study`);
+  button.append(make('span', hasDemo ? 'Watch demo & read case study →' : 'Read case study →', 'project-action'));
+  if (!hasDemo) button.append(make('span', 'Demo coming soon', 'demo-status'));
+  button.setAttribute('aria-label', hasDemo ? `Watch demo and read case study: ${project.title}` : `Read case study: ${project.title}`);
   button.addEventListener('click', () => openProject(project, button));
   $('projects-content').append(button);
 });

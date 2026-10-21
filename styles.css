@@ -53,6 +53,25 @@ h2 span { font-size: 10px; color: var(--accent); letter-spacing: .08em; }
 #contact-copy { color: var(--muted); max-width: 430px; font-size: 14px; }
 .email-button { display: inline-flex; align-items: center; gap: 40px; padding: 11px 19px; border: 1px solid var(--accent); border-radius: 3px; font-size: 12px; color: var(--accent); margin-top: 16px; transition: background 160ms; }
 .email-button:hover { background: color-mix(in srgb, var(--accent) 8%, transparent); }
+.email-button { background: transparent; cursor: pointer; min-height: 44px; }
+.contact-form { display: grid; gap: 8px; margin-top: 28px; }
+.contact-form label { font-size: 12px; margin-top: 10px; }
+.contact-form input, .contact-form textarea { width: 100%; min-width: 0; background: var(--surface); color: var(--text); border: 1px solid var(--line); border-radius: 3px; padding: 12px; font: inherit; font-size: 14px; }
+.contact-form textarea { resize: vertical; min-height: 140px; }
+.contact-form input:focus-visible, .contact-form textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.contact-form input::placeholder, .contact-form textarea::placeholder { color: var(--muted); opacity: 1; }
+.contact-form .email-button { justify-self: start; margin-top: 0; }
+.contact-form .email-button:disabled { cursor: wait; opacity: .6; }
+.contact-note, #contact-status, .email-alternative { font-size: 12px; color: var(--muted); }
+.contact-note { margin: 6px 0; }
+#contact-status { margin: 0; min-height: 24px; }
+#contact-status[data-error] { color: #ffb4a6; }
+.contact-trap { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+.email-alternative { border-top: 1px solid var(--line); margin-top: 18px; padding-top: 12px; overflow-wrap: anywhere; }
+.email-alternative p { margin: 0; }
+.email-alternative a { color: var(--accent); }
+#copy-email { padding: 8px 0; min-height: 44px; border: 0; background: transparent; color: var(--accent); font-size: 12px; cursor: pointer; }
+#copy-status { display: block; }
 footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 24px 0 30px; border-top: 1px solid var(--line); color: var(--muted); font-size: 10px; }
 .entry { padding: 24px 0; border-top: 1px solid var(--line); }
 .entry p { color: var(--muted); margin: 8px 0 12px; font-size: 14px; }
@@ -63,7 +82,8 @@ footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12
 .project-card { display: block; width: 100%; text-align: left; color: inherit; cursor: pointer; background: transparent; border: 0; border-top: 1px solid var(--line); padding: 25px 0; }
 .project-card:hover h3 { color: var(--accent); }
 .project-action { display: inline-block; margin-top: 16px; color: var(--accent); font-size: 13px; font-weight: 500; }
-.thumbnail { display: block; width: 100%; aspect-ratio: 16/9; object-fit: cover; border: 1px solid var(--line); border-radius: 3px; margin-bottom: 18px; }
+.demo-status { display: block; color: var(--muted); font-size: 11px; margin-top: 5px; }
+.thumbnail { display: block; width: 100%; height: auto; aspect-ratio: 16/9; object-fit: cover; border: 1px solid var(--line); border-radius: 3px; margin-bottom: 18px; }
 .writing-link { display: block; }
 dialog { color: var(--text); background: var(--background); border: 1px solid var(--line); border-radius: 6px; max-height: 90dvh; width: min(850px, calc(100% - 32px)); padding: 0; }
 dialog::backdrop { background: color-mix(in srgb, var(--background) 90%, transparent); }

@@ -42,7 +42,23 @@
       <section id="experience" aria-labelledby="experience-heading"><h2 id="experience-heading"><span>02 /</span> Experience</h2><div id="experience-content"></div><div id="resume" class="resume"><span aria-disabled="true">Résumé coming soon <span aria-hidden="true">↗</span></span></div></section>
       <section id="projects" aria-labelledby="projects-heading"><h2 id="projects-heading"><span>03 /</span> Selected projects</h2><div id="projects-content"></div></section>
       <section id="writing" aria-labelledby="writing-heading"><h2 id="writing-heading"><span>04 /</span> Writing</h2><div id="writing-content"></div></section>
-      <section id="contact" aria-labelledby="contact-heading"><h2 id="contact-heading"><span>05 /</span> Contact</h2><p class="contact-title">Let’s make work<br>flow better<span>.</span></p><p id="contact-copy"></p><a id="email-button" class="email-button">Email me <span aria-hidden="true">↗</span></a></section>
+      <section id="contact" aria-labelledby="contact-heading">
+        <h2 id="contact-heading"><span>05 /</span> Contact</h2>
+        <p class="contact-title">Let’s make work<br>flow better<span>.</span></p><p id="contact-copy"></p>
+        <form id="contact-form" class="contact-form" action="https://formspree.io/f/myekrleq" method="post">
+          <label for="contact-name">Name</label>
+          <input id="contact-name" name="name" autocomplete="name" required maxlength="100">
+          <label for="contact-email">Email</label>
+          <input id="contact-email" name="email" type="email" autocomplete="email" required maxlength="254">
+          <label for="contact-message">Message</label>
+          <textarea id="contact-message" name="message" rows="5" required minlength="10" maxlength="5000" placeholder="Tell me about the process or project you have in mind."></textarea>
+          <div class="contact-trap" aria-hidden="true"><label for="contact-website">Leave this field empty</label><input id="contact-website" name="website" tabindex="-1" autocomplete="off"></div>
+          <p class="contact-note">Your details will only be used to respond to your enquiry.</p>
+          <button id="send-message" class="email-button" type="submit">Send message <span aria-hidden="true">↗</span></button>
+          <p id="contact-status" role="status" aria-live="polite" aria-atomic="true"></p>
+        </form>
+        <div class="email-alternative"><p>Prefer email? <a id="email-button"></a></p><button id="copy-email" type="button">Copy email address</button><span id="copy-status" role="status" aria-live="polite"></span></div>
+      </section>
       <footer><span id="copyright"></span><a href="#about">Back to top ↑</a></footer>
     </main>
   </div>

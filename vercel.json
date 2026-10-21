@@ -1,0 +1,12 @@
+{
+  "headers": [
+    {
+      "source": "/resume.pdf",
+      "headers": [
+        { "key": "Content-Type", "value": "application/pdf" },
+        { "key": "Content-Disposition", "value": "inline; filename=Mustapha_Musdhaliph_Mofe_Resume.pdf" },
+        { "key": "X-Content-Type-Options", "value": "nosniff" }
+      ]
+    }
+  ]
+}

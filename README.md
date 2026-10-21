@@ -152,9 +152,9 @@ At the very top of styles.css, edit only the four palette variables:
 
 Borders and surfaces derive from these colors. Keep text readable against the background. The favicon is a separate SVG asset, so edit its fill colors as well if you want its colors to match a new palette.
 
-## Add a contact form later
+## Contact form
 
-The current Email me button opens the visitor's configured email app addressed to MMusdhaliph@gmail.com. To add a form without a backend, choose a hosted form service, create a form there, and follow its HTML embedding instructions. Replace or supplement the contact button in index.html with the supplied form. Use visible labels, a confirmation state, and accessible errors. Never put secret API keys into this public repository. This addition requires a small page-code change; ordinary content edits do not.
+The contact form posts to Formspree's Mofe Portfolio Contact form and delivers notifications to mmusdhaliph@gmail.com. Visitors see an on-page success or error message. Failed requests preserve their text. The email link and copy-email button remain available as alternatives. See CONTACT-SETUP.md for the endpoint and verification record. No private API key is required.
 
 ## Common mistakes
 
