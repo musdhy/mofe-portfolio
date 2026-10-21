@@ -59,8 +59,10 @@ projects: [
   {
     title: 'Your project title',
     summary: 'A short, factual description of the project.',
-    what: 'Explain what the system does and the process it supports.',
-    how: 'Explain how you built it. Use \\n for paragraph breaks.',
+    challenge: 'Explain the problem this project addressed.',
+    approach: 'Explain how you built it. Use \\n for paragraph breaks.',
+    integrations: 'Name the integrations and distinguish demo data from live connections.',
+    outcome: 'Describe the result without inventing metrics.',
     tools: ['Tool one', 'Tool two'],
     thumbnail: '',
     thumbnailAlt: '',
@@ -70,7 +72,7 @@ projects: [
 ],
 ```
 
-There is no project limit. To go from 8 projects to 10 or beyond, paste more project objects inside the same array, separated by commas. Each card opens its full project view on your site. The Back button and Escape key close it.
+There is no project limit. To go from 8 projects to 10 or beyond, paste more project objects inside the same array, separated by commas. Cards with a supported Loom video show **Watch Demo** and open a recorded demonstration, followed by The Challenge, Our Approach, Key Integrations and The Outcome. They do not open a usable live application. Cards without a recording show **Demo coming soon** and still open the case study. Older `what` and `how` fields remain supported. The Back button and Escape key close the dialog.
 
 ### Edit an existing project
 

@@ -108,24 +108,33 @@ function openProject(project, trigger) {
   const title = make('h2', project.title);
   title.id = 'project-title';
   detail.append(title, make('p', project.summary));
-  for (const [heading, text] of [['What it does', project.what], ['How it was achieved', project.how]]) {
-    if (text) detail.append(make('h3', heading), make('p', text));
-  }
-  if (project.tools?.length) detail.append(make('h3', 'Tools used'), tags(project.tools));
+  detail.append(make('p', 'Watch a recorded demonstration of how this system works.', 'entry-meta'));
   if (project.videos?.length) {
-    detail.append(make('h3', 'Project walkthroughs'));
+    detail.append(make('h3', 'Watch Demo'));
     project.videos.forEach((video, index) => {
       const url = loomEmbed(video);
       if (!url) { detail.append(make('p', 'This video is unavailable.')); return; }
       const iframe = make('iframe', '', 'video-frame');
       iframe.src = url;
-      iframe.title = `${project.title} — walkthrough ${index + 1}`;
+      iframe.title = `${project.title} — demo ${index + 1}`;
       iframe.allow = 'autoplay; fullscreen; picture-in-picture';
       iframe.allowFullscreen = true;
       iframe.loading = 'lazy';
       detail.append(iframe);
     });
+  } else {
+    detail.append(make('p', 'Demo coming soon. Read the case study below.'));
   }
+  for (const [heading, text] of [
+    ['The Challenge', project.challenge],
+    ['Our Approach', project.approach || project.how],
+    ['Key Integrations', project.integrations],
+    ['The Outcome', project.outcome],
+    ['What it does', project.what]
+  ]) {
+    if (text) detail.append(make('h3', heading), make('p', text));
+  }
+  if (project.tools?.length) detail.append(make('h3', 'Tools used'), tags(project.tools));
   if (project.images?.length) {
     detail.append(make('h3', 'Gallery'));
     const gallery = make('div', '', 'gallery');
@@ -152,7 +161,10 @@ content.projects.forEach(project => {
   button.type = 'button';
   button.setAttribute('aria-haspopup', 'dialog');
   if (project.thumbnail) button.append(thumbnail(project.thumbnail, project.thumbnailAlt || project.title));
-  button.append(make('h3', `${project.title} ↗`), make('p', project.summary), tags(project.tools));
+  button.append(make('h3', project.title), make('p', project.summary), tags(project.tools));
+  const hasDemo = project.videos?.some(video => loomEmbed(video));
+  button.append(make('span', hasDemo ? 'Watch Demo →' : 'Demo coming soon', 'project-action'));
+  button.setAttribute('aria-label', hasDemo ? `Watch demo: ${project.title}` : `${project.title}: demo coming soon, read case study`);
   button.addEventListener('click', () => openProject(project, button));
   $('projects-content').append(button);
 });

@@ -62,6 +62,7 @@ footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12
 .tags li { font-size: 11px; color: var(--accent); border: 1px solid var(--line); padding: 2px 9px; border-radius: 3px; }
 .project-card { display: block; width: 100%; text-align: left; color: inherit; cursor: pointer; background: transparent; border: 0; border-top: 1px solid var(--line); padding: 25px 0; }
 .project-card:hover h3 { color: var(--accent); }
+.project-action { display: inline-block; margin-top: 16px; color: var(--accent); font-size: 13px; font-weight: 500; }
 .thumbnail { display: block; width: 100%; aspect-ratio: 16/9; object-fit: cover; border: 1px solid var(--line); border-radius: 3px; margin-bottom: 18px; }
 .writing-link { display: block; }
 dialog { color: var(--text); background: var(--background); border: 1px solid var(--line); border-radius: 6px; max-height: 90dvh; width: min(850px, calc(100% - 32px)); padding: 0; }
